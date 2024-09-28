@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      window.history.replaceState({}, "", "https://www.kchcompany.com/");
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Header-->
+    <header class="masthead" style="background-image: url('./img/kchH.jpg')">
+      <div class="container">
+        <div class="masthead-heading text-uppercase">김창훈 호프</div>
+      </div>
+    </header>
+    <!-- Section-->
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-5">
+        <div style="text-align: center; padding: 10px">
+          사진 클릭시 사진 확대가 가능합니다.
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <img
+              class="card-img-top"
+              id="image1"
+              src="img/h/11.jpg"
+              alt="..."
+            />
+          </div>
+          <div class="col-md-6">
+            <img
+              class="card-img-top"
+              id="image2"
+              src="img/h/22.jpg"
+              alt="..."
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 이미지 ID를 기반으로 이벤트 리스너 추가
+        document
+          .getElementById("image1")
+          .addEventListener("click", function () {
+            window.location.href = this.src;
+          });
+        document
+          .getElementById("image2")
+          .addEventListener("click", function () {
+            window.location.href = this.src;
+          });
+      });
+    </script>
+  </body>
+</html>

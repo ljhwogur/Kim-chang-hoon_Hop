@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <style>
+      body {
+        overflow: auto;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .box {
+        width: 33.33%;
+        height: 100vh;
+        background: #f4f4f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .box img {
+        height: 100%;
+        transition: all 0.5s;
+      }
+      .box:hover img {
+        transform: scale(1.1);
+      }
+      .box:hover .caption {
+        opacity: 1;
+      }
+      .box .caption {
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        font-size: 24px;
+        opacity: 0;
+        transition: all 0.5s;
+      }
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 500px;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+      }
+      .popup img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .popup-buttons {
+        display: flex;
+        justify-content: space-between; /* 버튼들 사이에 공간을 분배 */
+        width: 100%; /* 버튼 컨테이너를 팝업의 전체 너비로 설정 */
+        padding: 0 10px; /* 양쪽에 패딩 추가 */
+      }
+
+      .popup-buttons span {
+        margin-left: 10px;
+        cursor: pointer;
+        background-color: transparent; /* 배경색을 투명색으로 변경 */
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #f1f1f1; /* 테두리 추가로 가시성 확보 */
+      }
+      
+      .popup-buttons .dont-show {
+        background-color: transparent; /* 배경색을 투명색으로 변경 */
+        border: 1px solid #ddd; /* 테두리 색상 변경으로 가시성 확보 */
+      }
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+      .header-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+      }
+      .logo img {
+        height: 250px;
+      }
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          height: 100vh;
+        }
+        .box {
+          width: 100%;
+        }
+        .box img {
+          width: 100%;
+          transition: all 0.5s;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <a href="/" class="logo">
+          <img src="img/logo2.jpg" alt="로고" />
+        </a>
+      </div>
+    </header>
+
+    <div class="container">
+      <a
+        href="https://www.kchcompany.com/pocha.html"
+        class="box"
+        onclick="changeURL('https://www.kchcompany.com/')"
+      >
+        <img src="img/kchP.jpg" alt="김창훈 포차" />
+        <div class="caption">김창훈 포차</div>
+      </a>
+      <a
+        href="https://www.kchcompany.com/hope.html"
+        class="box"
+        onclick="changeURL('https://www.kchcompany.com/')"
+      >
+        <img src="img/kchH.jpg" alt="김창훈 호프" />
+        <div class="caption">김창훈 호프</div>
+      </a>
+      <a
+        href="https://www.kchcompany.com/jumak.html"
+        class="box"
+        onclick="changeURL('https://www.kchcompany.com/')"
+      >
+        <img src="img/kchJ.jpg" alt="김창훈 주막" />
+        <div class="caption">김창훈 주막</div>
+      </a>
+
+      <div class="popup" id="popup">
+        <img src="img/팝업.jpg" alt="이벤트 및 할인 정보" />
+        <div class="popup-buttons">
+          <span class="close" onclick="closePopup()">닫기</span>
+          <span class="dont-show" onclick="dontShowToday()"
+            >오늘 하루 보지 않기</span
+          >
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var dontShowToday = localStorage.getItem("dontShowToday");
+          var now = new Date().getTime();
+
+          // '오늘 하루 보지 않기'를 선택한 시간으로부터 24시간이 지났는지 확인
+          if (dontShowToday && now - parseInt(dontShowToday) < 86400000) {
+            // 24시간이 지나지 않았다면, 팝업을 표시하지 않음
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+          }
+        });
+
+        function dontShowToday() {
+          var now = new Date().getTime();
+          localStorage.setItem("dontShowToday", now);
+          localStorage.setItem("lastClosed", now); // 추가: 팝업을 닫을 때의 시간도 저장
+          closePopup();
+        }
+
+        function closePopup() {
+          var popup = document.getElementById("popup");
+          popup.style.display = "none";
+          var now = new Date().getTime();
+          localStorage.setItem("lastClosed", now); // 팝업 닫을 때 시간 저장
+        }
+      </script>
+    </div>
+  </body>
+</html>

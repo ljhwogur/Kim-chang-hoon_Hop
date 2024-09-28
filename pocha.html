@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=4p30lppr9u"></script>
+    <script>
+      window.history.replaceState({}, "", "https://www.kchcompany.com/");
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+      .menu-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .center-align {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="container">
+        <div class="masthead-heading text-uppercase">김창훈 포차</div>
+      </div>
+    </header>
+    <!-- Section-->
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-5">
+        <label>시그니처</label>
+        <div
+          class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+        >
+          <!-- 메뉴 아이템 -->
+          <div class="col mb-5">
+            <div class="card h-100">
+              <img
+                class="card-img-top menu-image"
+                src="img/p/곱도리탕.jpg"
+                alt="..."
+              />
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <h5 class="fw-bolder">곱도리탕</h5>
+                  26,000원
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100">
+              <img
+                class="card-img-top menu-image"
+                src="img/p/바삭치즈감자전.jpg"
+                alt="..."
+              />
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <h5 class="fw-bolder">바삭치즈감자전</h5>
+                  17,000원
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100">
+              <img
+                class="card-img-top menu-image"
+                src="img/p/닭발튀김.jpg"
+                alt="..."
+              />
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <h5 class="fw-bolder">닭발튀김</h5>
+                  17,000원
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-5">
+            <div class="card h-100">
+              <img
+                class="card-img-top menu-image"
+                src="img/p/순두부치즈그라탕.jpg"
+                alt="..."
+              />
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <h5 class="fw-bolder">순두부치즈그라탕</h5>
+                  17,000원
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; padding: 10px">
+          사진 클릭시 사진 확대가 가능합니다.
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <img
+              class="card-img-top"
+              id="image1"
+              src="img/p/kchPmenu.jpg"
+              alt="..."
+            />
+          </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div id="map" style="width:100%;height:400px;"></div>
+            </div>
+          </div>
+      </div>
+      
+    </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 이미지 ID를 기반으로 이벤트 리스너 추가
+        document
+          .getElementById("image1")
+          .addEventListener("click", function () {
+            window.location.href = this.src;
+          });
+      });
+    </script>
+    <script>
+        var mapOptions = {
+            center: new naver.maps.LatLng(37.5446076, 127.0692267),
+            zoom: 16
+        };
+        
+        var map = new naver.maps.Map('map', mapOptions);
+
+        var markerOprions = {
+            position: new naver.maps.LatLng(37.5446076, 127.0692267),
+            map: map
+        };
+
+        var marker = new naver.maps.Marker(markerOprions);
+        </script>
+  </body>
+</html>
